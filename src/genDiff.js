@@ -1,24 +1,25 @@
 /* eslint-disable no-useless-concat */
 import _ from 'lodash';
+import parsers from './parsers.js';
 
-const genDiff = (data1, data2) => {
-  const data1ToJson = JSON.parse(data1);
-  const data2ToJson = JSON.parse(data2);
-  const unionKeys = _.union(Object.keys(data1ToJson), Object.keys(data2ToJson));
+const genDiff = (path1, path2) => {
+  const data1ToString = parsers(path1);
+  const data2ToString = parsers(path2);
+  const unionKeys = _.union(Object.keys(data1ToString), Object.keys(data2ToString));
   const keys = _.sortBy(unionKeys);
   const diffs = keys.reduce((acc, next) => {
     const key = next;
-    const isInJson1 = _.has(data1ToJson, key);
-    const isInJson2 = _.has(data2ToJson, key);
-    if (isInJson1 && !isInJson2) {
-      acc.push([`  - ${key}`, data1ToJson[key]]);
-    } else if (!isInJson1 && isInJson2) {
-      acc.push([`  + ${key}`, data2ToJson[key]]);
-    } else if (isInJson1 && isInJson2 && data1ToJson[key] === data2ToJson[key]) {
-      acc.push([`    ${key}`, data1ToJson[key]]);
+    const isInString1 = _.has(data1ToString, key);
+    const isInString2 = _.has(data2ToString, key);
+    if (isInString1 && !isInString2) {
+      acc.push([`  - ${key}`, data1ToString[key]]);
+    } else if (!isInString1 && isInString2) {
+      acc.push([`  + ${key}`, data2ToString[key]]);
+    } else if (isInString1 && isInString2 && data1ToString[key] === data2ToString[key]) {
+      acc.push([`    ${key}`, data1ToString[key]]);
     } else {
-      acc.push([`  - ${key}`, data1ToJson[key]]);
-      acc.push([`  + ${key}`, data2ToJson[key]]);
+      acc.push([`  - ${key}`, data1ToString[key]]);
+      acc.push([`  + ${key}`, data2ToString[key]]);
     }
     return acc;
   }, []);

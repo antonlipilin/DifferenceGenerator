@@ -5,3 +5,4 @@
 [![Actions Status](https://github.com/antonlipilin/DifferenceGenerator/workflows/Tests%20and%20Linter/badge.svg)](https://github.com/antonlipilin/DifferenceGenerator/actions)
 [![asciicast](https://asciinema.org/a/GEqSXpJCwGRjrgSyWSjTL0sjD.svg)](https://asciinema.org/a/GEqSXpJCwGRjrgSyWSjTL0sjD)
 [![asciicast](https://asciinema.org/a/j68uLxtHC8UEz0phFzuMAzTNm.svg)](https://asciinema.org/a/j68uLxtHC8UEz0phFzuMAzTNm)
+[![asciicast](https://asciinema.org/a/HP7Xa6o53pk8SisjIWr0jR8zZ.svg)](https://asciinema.org/a/HP7Xa6o53pk8SisjIWr0jR8zZ)

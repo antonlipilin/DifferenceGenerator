@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 const getValue = (data) => {
   if (_.isObject(data)) {
     return '[complex value]';

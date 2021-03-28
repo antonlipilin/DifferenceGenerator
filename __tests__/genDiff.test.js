@@ -6,7 +6,7 @@ import genDiff from '../src/genDiff.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-test('stylish format test with JSON object', () => {
+test('stylish format test with JSON objects', () => {
   expect(genDiff(`${__dirname}/../__fixtures__/nestedObject1.json`, `${__dirname}/../__fixtures__/nestedObject2.json`)).toEqual(`{
     common: {
       + follow: false
@@ -53,7 +53,7 @@ test('stylish format test with JSON object', () => {
 }`);
 });
 
-test('stylish format test with YAML object', () => {
+test('stylish format test with YAML objects', () => {
   expect(genDiff(`${__dirname}/../__fixtures__/nestedObject1.yml`, `${__dirname}/../__fixtures__/nestedObject2.yml`)).toEqual(`{
     common: {
       + follow: false
@@ -98,4 +98,36 @@ test('stylish format test with YAML object', () => {
         fee: 100500
     }
 }`);
+});
+
+test('plain format test with JSON objects', () => {
+  expect(genDiff(`${__dirname}/../__fixtures__/nestedObject1.json`, `${__dirname}/../__fixtures__/nestedObject2.json`, 'plain'))
+    .toEqual(
+ `Property 'common.follow' was added with value: false
+Property 'common.setting2' was removed
+Property 'common.setting3' was updated. From true to null
+Property 'common.setting4' was added with value: 'blah blah'
+Property 'common.setting5' was added with value: [complex value]
+Property 'common.setting6.doge.wow' was updated. From '' to 'so much'
+Property 'common.setting6.ops' was added with value: 'vops'
+Property 'group1.baz' was updated. From 'bas' to 'bars'
+Property 'group1.nest' was updated. From [complex value] to 'str'
+Property 'group2' was removed
+Property 'group3' was added with value: [complex value]`);
+});
+
+test('plain format test with YAML objects', () => {
+  expect(genDiff(`${__dirname}/../__fixtures__/nestedObject1.yml`, `${__dirname}/../__fixtures__/nestedObject2.yml`, 'plain'))
+    .toEqual(
+`Property 'common.follow' was added with value: false
+Property 'common.setting2' was removed
+Property 'common.setting3' was updated. From true to null
+Property 'common.setting4' was added with value: 'blah blah'
+Property 'common.setting5' was added with value: [complex value]
+Property 'common.setting6.doge.wow' was updated. From '' to 'so much'
+Property 'common.setting6.ops' was added with value: 'vops'
+Property 'group1.baz' was updated. From 'bas' to 'bars'
+Property 'group1.nest' was updated. From [complex value] to 'str'
+Property 'group2' was removed
+Property 'group3' was added with value: [complex value]`);
 });

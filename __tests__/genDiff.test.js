@@ -6,7 +6,7 @@ import genDiff from '../src/genDiff.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-test('JSON nested object', () => {
+test('stylish format test with JSON object', () => {
   expect(genDiff(`${__dirname}/../__fixtures__/nestedObject1.json`, `${__dirname}/../__fixtures__/nestedObject2.json`)).toEqual(`{
     common: {
       + follow: false
@@ -53,7 +53,7 @@ test('JSON nested object', () => {
 }`);
 });
 
-test('YAML nested object', () => {
+test('stylish format test with YAML object', () => {
   expect(genDiff(`${__dirname}/../__fixtures__/nestedObject1.yml`, `${__dirname}/../__fixtures__/nestedObject2.yml`)).toEqual(`{
     common: {
       + follow: false

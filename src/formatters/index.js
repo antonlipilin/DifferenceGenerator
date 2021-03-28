@@ -7,6 +7,8 @@ export default (ast, formatName) => {
     result = stylish(ast);
   } else if (formatName === 'plain') {
     result = plain(ast);
+  } else if (formatName === 'json') {
+    result = JSON.stringify(ast);
   }
   return result;
 };

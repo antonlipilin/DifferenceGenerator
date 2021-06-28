@@ -2,12 +2,17 @@ import stylish from './stylish.js';
 import plain from './plain.js';
 
 export default (ast, formatName) => {
-  if (formatName === 'stylish') {
-    return stylish(ast);
-  }
-  if (formatName === 'plain') {
-    return plain(ast);
-  }
+  switch (formatName) {
+    case 'stylish':
+      return stylish(ast);
 
-  return JSON.stringify(ast);
+    case 'plain':
+      return plain(ast);
+
+    case 'json':
+      return JSON.stringify(ast);
+
+    default:
+      throw new Error('unsupported format');
+  }
 };

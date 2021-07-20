@@ -32,23 +32,18 @@ const stylish = (ast) => {
       const {
         type, name, value, oldValue, newValue,
       } = item;
-      if (type === 'added') {
-        return `${currentIndent}  + ${name}: ${stringify(value, currentIndent)}`;
+      switch (type) {
+        case 'added':
+          return `${currentIndent}  + ${name}: ${stringify(value, currentIndent)}`;
+        case 'deleted':
+          return `${currentIndent}  - ${name}: ${stringify(value, currentIndent)}`;
+        case 'unchanged':
+          return `${currentIndent}    ${name}: ${stringify(value, currentIndent)}`;
+        case 'changed':
+          return [`${currentIndent}  - ${name}: ${stringify(oldValue, currentIndent)}`, `${currentIndent}  + ${name}: ${stringify(newValue, currentIndent)}`];
+        default:
+          return `${currentIndent}    ${name}: ${iter(value, depth + 4)}`;
       }
-
-      if (type === 'deleted') {
-        return `${currentIndent}  - ${name}: ${stringify(value, currentIndent)}`;
-      }
-
-      if (type === 'unchanged') {
-        return `${currentIndent}    ${name}: ${stringify(value, currentIndent)}`;
-      }
-
-      if (type === 'changed') {
-        return [`${currentIndent}  - ${name}: ${stringify(oldValue, currentIndent)}`, `${currentIndent}  + ${name}: ${stringify(newValue, currentIndent)}`];
-      }
-
-      return `${currentIndent}    ${name}: ${iter(value, depth + 4)}`;
     });
     return ['{', ...lines, `${currentIndent}}`].join('\n');
   };

@@ -15,23 +15,18 @@ const plain = (ast) => {
         type, name, value, oldValue, newValue,
       } = item;
       const anchestry = depth + name;
-      if (type === 'added') {
-        return [`Property ${getValue(anchestry)} was added with value: ${getValue(value)}`];
+      switch (type) {
+        case 'added':
+          return [`Property ${getValue(anchestry)} was added with value: ${getValue(value)}`];
+        case 'deleted':
+          return [`Property ${getValue(anchestry)} was removed`];
+        case 'changed':
+          return [`Property ${getValue(anchestry)} was updated. From ${getValue(oldValue)} to ${getValue(newValue)}`];
+        case 'unchanged':
+          return [];
+        default:
+          return iter(value, `${anchestry}.`);
       }
-
-      if (type === 'deleted') {
-        return [`Property ${getValue(anchestry)} was removed`];
-      }
-
-      if (type === 'changed') {
-        return [`Property ${getValue(anchestry)} was updated. From ${getValue(oldValue)} to ${getValue(newValue)}`];
-      }
-
-      if (type === 'unchanged') {
-        return [];
-      }
-
-      return iter(value, `${anchestry}.`);
     });
 
     return lines.join('\n');

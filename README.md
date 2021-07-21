@@ -23,14 +23,14 @@ gendiff -h
 ```
 
 ### Пример использования:
-```$ gendiff --format plain path/to/file.yml another/path/file.json
-
+```
+gendiff --format plain path/to/file.yml another/path/file.json
 Property 'common.follow' was added with value: false
 Property 'group1.baz' was updated. From 'bas' to 'bars'
 Property 'group2' was removed
 
 # формат stylish
-$ gendiff filepath1.json filepath2.json
+gendiff filepath1.json filepath2.json
 
 {
   + follow: false

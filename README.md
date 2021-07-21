@@ -17,13 +17,6 @@ npm link
 ```
 gendiff -h
 ```
-### Cравнить два файла:
-```
-gendiff file1.json file2.json
-gendiff file1.yml file2.yml
-```
 
 ### Примеры: 
-[![asciicast](https://asciinema.org/a/HP7Xa6o53pk8SisjIWr0jR8zZ.svg)](https://asciinema.org/a/HP7Xa6o53pk8SisjIWr0jR8zZ)
-[![asciicast](https://asciinema.org/a/Mhcs5SOnMPaRWjNaJ4NStudV8.svg)](https://asciinema.org/a/Mhcs5SOnMPaRWjNaJ4NStudV8)
-[![asciicast](https://asciinema.org/a/8nPGngDnrzwAE9ILWXecr7boa.svg)](https://asciinema.org/a/8nPGngDnrzwAE9ILWXecr7boa)
+[![asciicast](https://asciinema.org/a/yC7iOKltVfNqXhazw8OLKXH0w.svg)](https://asciinema.org/a/yC7iOKltVfNqXhazw8OLKXH0w)

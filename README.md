@@ -4,7 +4,11 @@
 
 # Консольная утилита для сравнения файлов
 
-## Вы можете сравнить плоские и вложенные файлы .JSON или .yml.
+## Вычислитель отличий – программа, определяющая разницу между двумя структурами данных. 
+
+Возможности утилиты:
+* Поддержка разных входных форматов: yaml, json
+* Генерация отчета в виде plain text, stylish и json
 
 ### Установка и запуск в терминале:
 ```
@@ -18,5 +22,28 @@ npm link
 gendiff -h
 ```
 
-### Примеры: 
+### Пример использования:
+```$ gendiff --format plain path/to/file.yml another/path/file.json
+
+Property 'common.follow' was added with value: false
+Property 'group1.baz' was updated. From 'bas' to 'bars'
+Property 'group2' was removed
+
+# формат stylish
+$ gendiff filepath1.json filepath2.json
+
+{
+  + follow: false
+    setting1: Value 1
+  - setting2: 200
+  - setting3: true
+  + setting3: {
+        key: value
+    }
+  + setting4: blah blah
+  + setting5: {
+        key5: value5
+    }
+}
+```
 [![asciicast](https://asciinema.org/a/yC7iOKltVfNqXhazw8OLKXH0w.svg)](https://asciinema.org/a/yC7iOKltVfNqXhazw8OLKXH0w)
